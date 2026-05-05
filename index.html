@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>SOLE Hub X — God Mode</title>
+<style>
+:root{
+  --ink:#121a2d;--muted:#637187;--card:rgba(255,255,255,.82);--line:#fff;
+  --shadow:0 20px 55px rgba(18,26,45,.16);
+  --pink:#ff8fb3;--peach:#ffc29f;--cyan:#76dce8;--mint:#8ee6c2;--lav:#c7b7ff;--gold:#ffc861;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,Arial,sans-serif;background:linear-gradient(135deg,#fff0e9,#e7f8ff,#e9fff1);color:var(--ink);padding-bottom:96px;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;background:
+radial-gradient(circle at 15% 10%,rgba(255,143,179,.32),transparent 28%),
+radial-gradient(circle at 88% 18%,rgba(118,220,232,.34),transparent 28%),
+radial-gradient(circle at 50% 90%,rgba(199,183,255,.28),transparent 35%);pointer-events:none}
+.wrap{max-width:1180px;margin:auto;padding:18px;position:relative}
+.hero{border-radius:36px;background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow);padding:24px;margin-bottom:14px;position:relative;overflow:hidden}
+.hero:before{content:"";position:absolute;width:270px;height:270px;right:-90px;top:-90px;background:var(--pink);filter:blur(70px);opacity:.48;border-radius:50%}
+.badge{display:inline-flex;align-items:center;gap:8px;background:white;border-radius:999px;padding:8px 12px;font-size:13px;font-weight:900;box-shadow:0 8px 18px rgba(0,0,0,.06)}
+h1{font-size:clamp(34px,7vw,66px);line-height:.94;margin:16px 0 10px;letter-spacing:-2.5px}.sub{color:var(--muted);line-height:1.55;max-width:830px}
+.chip,.pill{display:inline-block;border-radius:999px;background:#fff;border:1px solid #edf0f5;padding:7px 10px;margin:4px;font-size:12px;font-weight:900;color:#586476}
+.notice{border-radius:24px;background:#fff8d8;border:1px solid #f4c65d;padding:14px;margin:12px 0;color:#7a5412;font-size:14px;line-height:1.45}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(285px,1fr));gap:16px}
+.card{border-radius:30px;background:var(--card);border:1px solid var(--line);box-shadow:0 14px 34px rgba(18,26,45,.12);padding:18px;animation:pop .28s ease both}
+@keyframes pop{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.icon{width:58px;height:58px;border-radius:21px;display:flex;align-items:center;justify-content:center;font-size:29px;box-shadow:0 10px 22px rgba(18,26,45,.13);margin-bottom:12px}
+.g1{background:linear-gradient(135deg,#b7f5db,#9fe9ff)}.g2{background:linear-gradient(135deg,#b9d5ff,#d3b7ff)}.g3{background:linear-gradient(135deg,#aee5ff,#80f0e8)}.g4{background:linear-gradient(135deg,#ffc0d6,#ffc7a1)}.g5{background:linear-gradient(135deg,#ddaaff,#a4d4ff)}.g6{background:linear-gradient(135deg,#d4ff9f,#ffd68a)}
+h2{margin:0;font-size:24px}.desc{color:var(--muted);font-size:13px;line-height:1.45;margin:6px 0 14px}
+.search{display:flex;gap:8px;background:#f7f9fc;border:1px solid #ecf0f5;border-radius:18px;padding:10px;margin-bottom:10px}
+input,textarea{width:100%;border:0;background:transparent;outline:0;color:var(--ink);font-size:14px}
+textarea{height:92px;background:#f7f9fc;border:1px solid #ecf0f5;border-radius:18px;padding:12px;resize:vertical}
+.btnrow{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px}
+button{cursor:pointer;border:0;border-radius:17px;background:#fff;color:var(--ink);font-weight:900;padding:11px 12px;text-align:left;box-shadow:0 7px 18px rgba(18,26,45,.07);border:1px solid #eff2f6;font-size:13px}
+button:active{transform:scale(.985)}.full{width:100%;display:flex;justify-content:space-between;align-items:center;margin:8px 0}.mini{font-size:12px;color:var(--muted);line-height:1.45}.good{color:#087d52}.bad{color:#a95500}
+.nav{position:fixed;z-index:50;bottom:10px;left:10px;right:10px;max-width:760px;margin:auto;border-radius:28px;background:rgba(255,255,255,.94);backdrop-filter:blur(18px);box-shadow:0 16px 38px rgba(18,26,45,.20);border:1px solid #fff;padding:8px;display:grid;grid-template-columns:repeat(5,1fr);gap:4px}
+.nav button{text-align:center;padding:10px 4px;border-radius:20px;box-shadow:none;background:transparent;color:#687385;font-size:11px}.nav button.active{background:#121a2d;color:#fff;box-shadow:0 9px 20px rgba(18,26,45,.25)}.nicon{display:block;font-size:20px;margin-bottom:3px}
+.splash{position:fixed;inset:0;background:linear-gradient(135deg,#ffe2ec,#e6f8ff,#e7ffef);z-index:999;display:flex;align-items:center;justify-content:center;flex-direction:column;transition:.45s}
+.logo{width:118px;height:118px;border-radius:50%;background:linear-gradient(135deg,#ff8fb3,#ffc861,#76dce8);display:flex;align-items:center;justify-content:center;font-size:66px;color:white;font-family:Georgia,serif;box-shadow:0 18px 45px rgba(18,26,45,.22);animation:pulse 1.5s infinite}
+@keyframes pulse{50%{transform:scale(1.04)}}.loader{margin-top:18px;width:170px;height:8px;border-radius:999px;background:#fff;overflow:hidden}.loader span{display:block;width:70%;height:100%;background:linear-gradient(90deg,#ff8fb3,#76dce8);animation:load 1.1s infinite}@keyframes load{from{transform:translateX(-120%)}to{transform:translateX(170%)}}
+.orb{position:fixed;right:18px;bottom:104px;z-index:70;width:62px;height:62px;border-radius:50%;border:1px solid #fff;background:linear-gradient(135deg,#ff8fb3,#76dce8);box-shadow:0 15px 35px rgba(18,26,45,.25);font-size:26px;text-align:center}
+.drawer{position:fixed;z-index:90;left:12px;right:12px;bottom:178px;max-width:760px;margin:auto;background:rgba(255,255,255,.96);border:1px solid #fff;border-radius:30px;box-shadow:0 25px 70px rgba(18,26,45,.25);padding:16px;display:none}
+.drawer.show{display:block}.drawerHead{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.status{display:flex;justify-content:space-between;gap:8px;background:#fff;border-radius:16px;padding:10px;margin:8px 0;font-size:13px}
+</style>
+</head>
+<body>
+<div id="splash" class="splash">
+  <div class="logo">S</div>
+  <h2 style="margin:18px 0 4px;font-size:34px;letter-spacing:6px">SOLE</h2>
+  <div style="letter-spacing:5px;color:#657085;font-weight:900">HUB X</div>
+  <div class="loader"><span></span></div>
+</div>
+
+<div class="wrap">
+  <section class="hero">
+    <span class="badge">⚡ God Mode v3.0</span>
+    <h1>SOLE Hub X</h1>
+    <p class="sub">God Mode dashboard with floating command orb, smart download handoff, Telegram deep search, favorites, mirror status UI, donate panel, update checker placeholder, and source JSON loader architecture.</p>
+    <div><span class="chip">Brave Ready</span><span class="chip">Telegram tg://</span><span class="chip">1DM Handoff</span><span class="chip">Favorites</span><span class="chip">Update Checker</span></div>
+  </section>
+  <div class="notice"><b>Safety note:</b> Keep this as a launcher for lawful/free/public-domain sources and safe discovery. Browser-first is safer than installing random stream APKs.</div>
+  <main id="view"></main>
+</div>
+
+<button class="orb" onclick="toggleDrawer()">⚡</button>
+<div id="drawer" class="drawer">
+  <div class="drawerHead"><b>⚡ God Mode Command Center</b><button onclick="toggleDrawer()">Close</button></div>
+  <div class="search"><span>🔎</span><input id="godq" placeholder="Search anything: cricket, movie, FLAC, Telegram, URL..."></div>
+  <div class="btnrow">
+    <button onclick="tgSearch(qs('#godq').value)">Telegram</button>
+    <button onclick="openBrave('https://www.google.com/search?q='+enc(qs('#godq').value))">Google</button>
+    <button onclick="openBrave('https://www.youtube.com/results?search_query='+enc(qs('#godq').value))">YouTube</button>
+    <button onclick="openBrave('https://archive.org/search?query='+enc(qs('#godq').value))">Archive</button>
+  </div>
+  <div class="status"><span>Source Version</span><b id="srcVer">Local v3.0</b></div>
+  <div class="status"><span>Telegram</span><b>tg:// ready</b></div>
+  <div class="status"><span>Downloader</span><b>handoff ready</b></div>
+</div>
+
+<nav class="nav">
+  <button data-tab="torrents"><span class="nicon">⬇️</span>Torrents</button>
+  <button data-tab="social"><span class="nicon">📡</span>Social</button>
+  <button data-tab="movies"><span class="nicon">🎬</span>Movies</button>
+  <button data-tab="sports" class="active"><span class="nicon">🏏</span>Sports</button>
+  <button data-tab="music"><span class="nicon">🎵</span>Music</button>
+</nav>
+
+<script>
+const qs=s=>document.querySelector(s),qsa=s=>[...document.querySelectorAll(s)],enc=v=>encodeURIComponent((v||'').trim()),openBrave=u=>window.open(u,'_blank','noopener,noreferrer');
+const tgSearch=q=>{if(!q.trim())return;location.href='tg://search?q='+enc(q);setTimeout(()=>openBrave('https://t.me/s/'+enc(q)),900)};
+const copyText=t=>navigator.clipboard&&navigator.clipboard.writeText(t);
+const saveFav=(label,url)=>{let f=JSON.parse(localStorage.getItem('soleFavs')||'[]');f.unshift({label,url,date:new Date().toLocaleDateString()});localStorage.setItem('soleFavs',JSON.stringify(f.slice(0,30)));render(tab)}
+const favs=()=>JSON.parse(localStorage.getItem('soleFavs')||'[]');
+const toggleDrawer=()=>qs('#drawer').classList.toggle('show');
+const sources={sports:[['ICC.tv','https://www.icc-cricket.com/icc-tv'],['ICC YouTube','https://www.youtube.com/@ICC'],['Cricbuzz','https://www.cricbuzz.com/'],['ESPNcricinfo','https://www.espncricinfo.com/']],movies:[['Plex Free','https://watch.plex.tv/'],['Pluto TV','https://pluto.tv/'],['Tubi','https://tubitv.com/'],['YouTube Movies','https://www.youtube.com/feed/storefront'],['JustWatch','https://www.justwatch.com/']],music:[['Bandcamp','https://bandcamp.com/'],['Internet Archive Music','https://archive.org/details/etree'],['SoundCloud','https://soundcloud.com/'],['Qobuz Magazine','https://www.qobuz.com/']],tools:[['VirusTotal','https://www.virustotal.com/'],['Brave','https://brave.com/download/'],['RethinkDNS','https://rethinkdns.com/'],['F-Droid','https://f-droid.org/']]};
+function card(i,g,t,d,x){return `<section class="card"><div class="icon ${g}">${i}</div><h2>${t}</h2><div class="desc">${d}</div>${x}</section>`}
+function searchBox(id,ph,eng,tg=false){return `<div class="search"><span>🔎</span><input id="${id}" placeholder="${ph}"></div><div class="btnrow">${tg?`<button onclick="tgSearch(qs('#${id}').value)">Telegram App</button>`:''}${eng.map(e=>`<button onclick="doSearch('${id}','${e.url}')">${e.name}</button>`).join('')}</div>`}
+function doSearch(id,tpl){let q=qs('#'+id).value;if(!q.trim())return;if(tpl.startsWith('tg://'))return tgSearch(q);openBrave(tpl.replace('{q}',enc(q)))}
+function buttons(a){return a.map(([l,u])=>`<button class="full" onclick="openBrave('${u}')"><span>${l}</span><span>↗</span></button>`).join('')}
+function chips(a){return a.map(w=>`<span class="pill" onclick="tgSearch('${w}')">${w}</span>`).join('')}
+function zero(){return card('🛡️','g1','Zero-Ad Ready','Set this once before using any browser source.',buttons(sources.tools)+`<div class="mini"><b>Private DNS:</b> dns.adguard-dns.com<br>Use Brave as default browser. Block all site notifications.</div>`)}
+function catcher(){return card('🧠','g1','Universal Link Catcher','Paste URL / magnet / Telegram topic. It chooses smart action.',`<textarea id="catcher" placeholder="Paste link, magnet, m3u8, file URL, or search topic..."></textarea><div class="btnrow"><button onclick="smartOpen()">Smart Open</button><button onclick="downloadHandoff(qs('#catcher').value)">Download Handoff</button><button onclick="copyText(qs('#catcher').value)">Copy</button><button onclick="saveFav('Saved link',qs('#catcher').value)">Save Favorite</button></div><div class="mini">Smart Open: magnet → torrent info, tg/search → Telegram, http link → Brave/default browser.</div>`)}
+function smartOpen(){let v=qs('#catcher').value.trim();if(!v)return;if(v.startsWith('magnet:'))return alert('Magnet captured. Open with WebTorrent / torrent client using Android share sheet.');if(v.includes('t.me')||v.startsWith('tg://'))return openBrave(v);if(v.startsWith('http'))return openBrave(v);tgSearch(v)}
+function downloadHandoff(v){if(!v.trim())return;if(v.startsWith('magnet:'))alert('Use torrent client open-with flow for magnet links.');else if(v.startsWith('http'))location.href=v;else alert('Paste a direct file URL first. Android will offer download apps when supported.')}
+function favCard(){let f=favs();return card('⭐','g2','Favorites / Quick Save','Saved links stay on this device.',f.length?f.map(x=>`<button class="full" onclick="openBrave('${x.url}')"><span>${x.label}<br><small>${x.date}</small></span><span>Open</span></button>`).join('')+`<button class="full" onclick="localStorage.removeItem('soleFavs');render(tab)">Clear Favorites</button>`:'<div class="mini">No favorites yet. Use Save Favorite in link catcher.</div>')}
+function donate(){return card('☕','g4','Buy Sole a Coffee','Add your donate link later when you publish on GitHub.',`<button class="full" onclick="openBrave('https://www.buymeacoffee.com/')"><span>Buy Me A Coffee Setup</span><span>☕</span></button><button class="full" onclick="openBrave('https://paypal.me/')"><span>PayPal.me Setup</span><span>💸</span></button><button class="full" onclick="alert('Add UPI QR image later in GitHub assets folder.')"><span>UPI QR Placeholder</span><span>🇮🇳</span></button>`)}
+function tools(){return card('🧰','g5','Secret Tools Drawer','Safe browsing and media workflow utilities.',`<div class="btnrow"><button onclick="openBrave('https://www.virustotal.com/')">VirusTotal</button><button onclick="openBrave('https://www.opensubtitles.com/')">Subtitles</button><button onclick="openBrave('https://archive.org/')">Archive</button><button onclick="openBrave('https://justwatch.com/')">Where to Watch</button><button onclick="openBrave('https://webtorrent.io/')">WebTorrent</button><button onclick="openBrave('https://rethinkdns.com/')">RethinkDNS</button></div>`)}
+function updateCard(){return card('🔄','g3','Update Checker','Reads sources.json when hosted on GitHub Pages. Placeholder ready.',`<button class="full" onclick="checkUpdate()"><span>Check sources.json</span><span>↻</span></button><div id="updateStatus" class="mini">Current: God Mode v3.0</div>`)}
+function checkUpdate(){fetch('sources.json?ts='+Date.now()).then(r=>r.json()).then(j=>{qs('#updateStatus').innerHTML='Loaded source file: <b>'+j.version+'</b>';qs('#srcVer').textContent='GitHub '+j.version}).catch(()=>qs('#updateStatus').textContent='Could not read sources.json yet. Works after GitHub Pages deploy.')}
+let tab='sports';
+function render(t='sports'){tab=t;qsa('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.tab===tab));let html='';
+if(tab==='torrents')html=`<div class="grid">${zero()}${card('⬇️','g2','Torrent Search','Legal/public-domain torrent discovery.',searchBox('torq','Search legal/public-domain torrents...',[{name:'Internet Archive',url:'https://archive.org/search?query={q}'},{name:'Legit Search',url:'https://www.google.com/search?q=legit+torrents+{q}'},{name:'Linux ISOs',url:'https://www.google.com/search?q=linux+iso+torrent+{q}'},{name:'Gutenberg',url:'https://www.gutenberg.org/ebooks/search/?query={q}'}]))}${card('🧲','g3','WebTorrent / Magnet','Paste magnet and handoff to torrent tools.',`<textarea id="magnet" placeholder="Paste magnet link here..."></textarea><div class="btnrow"><button onclick="copyText(qs('#magnet').value)">Copy Magnet</button><button onclick="openBrave('https://webtorrent.io/')">Open WebTorrent</button><button onclick="saveFav('Magnet',qs('#magnet').value)">Save</button><button onclick="alert('Direct browser playback needs webtorrent.min.js and CORS-compatible peers.')">Streaming Info</button></div>`) }${catcher()}${favCard()}${updateCard()}</div>`;
+if(tab==='social')html=`<div class="grid">${card('📡','g3','Telegram Deep Search','tg://search opens Telegram app. Web fallback included.',searchBox('tgq','Search Telegram...',[{name:'Telegram Web',url:'https://t.me/s/{q}'},{name:'Google t.me',url:'https://www.google.com/search?q=site%3At.me%2Fs+{q}'},{name:'DuckDuckGo',url:'https://duckduckgo.com/?q=site%3At.me%2Fs+{q}'}],true)+`<div>${chips(['cricket highlights hd','sports news live','ICC updates','anime updates eng sub','flac music archive','hires audio','live concert flac','bandcamp lossless'])}</div>`)}${catcher()}${tools()}${favCard()}${updateCard()}</div>`;
+if(tab==='movies')html=`<div class="grid">${zero()}${card('🎬','g4','Movie / Series Search','Browser-first legal/free movie discovery.',searchBox('movq','Search movie or series...',[{name:'JustWatch',url:'https://www.justwatch.com/us/search?q={q}'},{name:'Plex',url:'https://watch.plex.tv/search?q={q}'},{name:'Tubi',url:'https://tubitv.com/search/{q}'},{name:'YouTube',url:'https://www.youtube.com/results?search_query={q}+movie'}]))}${card('🍿','g6','Free Movie Hubs','Legal/free streaming hubs.',buttons(sources.movies))}${catcher()}${favCard()}${donate()}${updateCard()}</div>`;
+if(tab==='sports')html=`<div class="grid">${zero()}${card('🏏','g6','Sports / Cricket Search','Search match, team, tournament, highlights, official live streams.',searchBox('spq','India vs Australia / IPL / ICC...',[{name:'ICC.tv',url:'https://www.google.com/search?q=site%3Aicc-cricket.com%2Ficc-tv+{q}'},{name:'Cricbuzz',url:'https://www.cricbuzz.com/search?q={q}'},{name:'ESPNcricinfo',url:'https://www.espncricinfo.com/search?q={q}'},{name:'YouTube Live',url:'https://www.youtube.com/results?search_query={q}+official+live+cricket'}]))}${card('🏆','g3','Official Score & Stream Hubs','Best safer first clicks.',buttons(sources.sports))}${card('🌐','g3','Mirror Status UI','Search-based active source discovery.',`<button class="full" onclick="openBrave('https://www.google.com/search?q=official+free+cricket+live+stream')"><span>Find legal cricket streams</span><span>↗</span></button><button class="full" onclick="openBrave('https://www.google.com/search?q=ICC.tv+live+cricket')"><span>Find ICC.tv stream</span><span>↗</span></button><button class="full" onclick="openBrave('https://www.youtube.com/results?search_query=live+cricket+official')"><span>YouTube official live</span><span>↗</span></button><div class="status"><span>ICC.tv</span><b class="good">safe</b></div><div class="status"><span>YouTube official</span><b class="good">safe</b></div>`)}${catcher()}${favCard()}${updateCard()}</div>`;
+if(tab==='music')html=`<div class="grid">${card('🎵','g5','Hi-Res Music Search','Lossless and high-quality music discovery.',searchBox('musq','Artist / album / FLAC...',[{name:'Bandcamp',url:'https://bandcamp.com/search?q={q}'},{name:'Archive FLAC',url:'https://archive.org/search?query={q}+flac'},{name:'SoundCloud',url:'https://soundcloud.com/search?q={q}'},{name:'Telegram',url:'tg://search?q={q}'}])+`<div>${chips(['flac music','hires audio','live concert flac','bandcamp lossless','artist downloads','qobuz magazine'])}</div>`)}${card('💿','g1','Music Hubs','Clean sources for music discovery and downloads.',buttons(sources.music))}${catcher()}${favCard()}${donate()}${updateCard()}</div>`;
+qs('#view').innerHTML=html}
+qsa('.nav button').forEach(b=>b.addEventListener('click',()=>render(b.dataset.tab)));
+setTimeout(()=>{qs('#splash').style.opacity='0';setTimeout(()=>qs('#splash')?.remove(),450)},1300);
+render('sports');
+</script>
+</body>
+</html>

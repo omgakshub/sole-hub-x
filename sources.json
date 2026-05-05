@@ -1,0 +1,16 @@
+{
+  "version": "3.0.0-god-mode",
+  "name": "SOLE Hub X",
+  "note": "God Mode source file. Edit this later to update safe/legal links without rebuilding APK.",
+  "features": [
+    "floating command orb",
+    "update checker",
+    "favorites",
+    "Telegram deep links",
+    "download handoff"
+  ],
+  "donate": {
+    "buyMeACoffee": "https://www.buymeacoffee.com/",
+    "paypal": "https://paypal.me/"
+  }
+}
